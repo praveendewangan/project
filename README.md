@@ -1,2 +1,2 @@
 # project
-small projects for learning process
+small projects for learning purpose
