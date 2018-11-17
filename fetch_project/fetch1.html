@@ -1,0 +1,128 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Fetch API Sandbox</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+
+<body>
+	<div class="container">
+		<h1 class="display-4 mb-4">Fetch API sandbox</h1>
+		<div class="d-flex">
+	<button class="btn btn-primary mr-4" id="get_text">Get Text</button>
+	<button class="btn btn-secondary mr-4" id="get_users">Get Json</button>
+	<button class="btn btn-secwarningondary mr-4" id="get_posts">Get API DATA</button>
+		</div>
+	<hr>
+	<div id="output"></div>
+	<form id="add_post">
+		<div class="form-group">
+			<input type="text" class="form-control" id="title" placeholder="Title">
+		</div>
+		<div class="form-group">
+			<textarea id="body" placeholder="Body" class="form-control"></textarea>
+		</div>
+		<input type="submit" class="btn btn-secondary" value="submit">
+	</form>
+	</div>
+	<script>
+	document.getElementById("get_text").addEventListener('click',get_text);
+	document.getElementById("get_users").addEventListener('click',get_users);
+	document.getElementById("get_posts").addEventListener('click',get_posts);
+	document.getElementById("add_post").addEventListener('click',add_post);
+		
+		function get_text()
+		{
+//			fetch("sample.txt")
+//			.then(function(res)
+//				 {
+//				return res.text();
+//				//console.log(res.text());
+//			})
+//			.then(function(data){
+//				console.log(data);
+//			})
+			
+			//With Aerow function
+			
+			fetch("sample.txt")
+			.then((res) => res.text())
+			.then((data) => {
+				document.getElementById('output').innerHTML=data;
+			})
+			.catch((err) => console.log(err))
+		}
+		
+		function get_users()
+		{
+			
+			//With Aerow function
+			
+			fetch("users.json")
+			.then((res) => res.json())
+			.then((data) => {
+				document.getElementById('output').innerHTML=data;
+				let output = '<h2>Users</h2>';
+				//console.log(data);
+				data.forEach(function(user)
+							{
+					output += `<ul class="list-group">
+								<li class="list-group-item mb-3">ID: ${user.id}</li>
+								<li class="list-group-item mb-3">ID: ${user.name}</li>
+								<li class="list-group-item mb-3">ID: ${user.email}</li>
+							</ul>`;
+				});
+				document.getElementById("output").innerHTML=output;
+			})
+			.catch((err) => console.log(err))
+		}
+		
+		
+		function get_posts()
+		{
+			
+			//With Aerow function
+			
+			fetch("https://jsonplaceholder.typicode.com/posts")
+			.then((res) => res.json())
+			.then((data) => {
+				let output = '<h2 class="mb-4">Posts</h2>';
+				//console.log(data);
+				data.forEach(function(post)
+							{
+					output += `<div class="card card-body mb-3">
+								<h3>${post.title}</h3><p>${post.body}</p>
+								</div>`;
+				});
+				document.getElementById("output").innerHTML=output;
+			})
+			.catch((err) => console.log(err))
+		}
+		
+		
+		
+		
+		function add_post(e)
+		{
+			e.preventDefault();
+			
+			let title = document.getElementById("title").value;
+			let body = document.getElementById("body").value;
+			//With Aerow function
+			
+			fetch("https://jsonplaceholder.typicode.com/posts",{
+				method:'POST',
+				headers:{
+					'Accept':'application/json,text/plain,*/*',
+					'Content-type':'application/json'
+				},
+				body:JSON.stringify({title:title,body:body})
+			})
+			.then((res) => res.json())
+			.then((data) => console.log(data))
+			.catch((err) => console.log(err))
+		}
+	</script>
+</body>
+</html>
