@@ -1,0 +1,92 @@
+
+.admin_title{
+	font-family: sans-serif;
+    background: cadetblue;
+    color: white;
+    text-align: center;
+    padding: 5px;
+}
+
+.admin_title > h4{
+	text-align: right;
+	padding:0;
+	margin:0;
+	display:flex;
+	justify-content:space-between;
+}
+
+.admin_title > h4 > a{
+	text-decoration:none;
+	color: white;
+	font-family: sans-serif;
+    background: #2e508c;
+    padding: 10px;
+	display: inline-block;
+}
+
+.dashboard{
+	margin-top:5%;
+	display:flex;
+	justify-content:center;
+}
+
+.dashboard > table{
+	width:300px;
+}
+
+.dashboard > table tr td{
+	text-align:center;
+	padding:10px;
+	font-family:sans-serif;
+	background:cadetblue;
+	color:#262552;
+}
+
+.dashboard > table tr td a{
+	text-decoration:none;
+	color:white;
+	background: white;
+    display: inline-block;
+    background: #262552;
+    padding: 7px;
+}
+
+.form_container{
+	margin-top:.5%;
+	display:flex;
+	justify-content:center;
+}
+
+.form_container > form{
+	width:300px;
+	padding:2.5% 2%;
+	border-radius:10px;
+	display:flex;
+	color:white;
+	font-family:sans-serif;
+    background: #1b3d5a;
+	justify-content:center;
+}
+.form_container > form input[type="text"],input[type="number"]{
+    border: none;
+    width: 90%;
+    height: 30px;
+    padding: 0 10px;
+    border-radius: 15px;
+	outline:none;
+}
+.form_container > form input[type="submit"]{
+    border: none;
+    width: 50%;
+    height: 30px;
+	background:aquamarine;
+    padding: 0 10px;
+    border-radius: 15px;
+	outline:none;
+	cursor:pointer;
+	transition:all .5s linear;
+}
+.form_container > form input[type="submit"]:hover{
+	background:#47a787;
+	color: white;
+}
